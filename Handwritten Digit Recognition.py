@@ -10,7 +10,7 @@ from __future__ import print_function
 import keras
 from keras.datasets import mnist
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Dense, Dropout
 from keras.optimizers import RMSprop
 
 #查看mnist資料型態
@@ -35,7 +35,9 @@ y_test = keras.utils.to_categorical(y_test, 10)
 
 model = Sequential()
 model.add(Dense(512, activation='relu', input_shape=(784,)))
+model.add(Dropout(0.2))
 model.add(Dense(512, activation='relu'))
+model.add(Dropout(0.2))
 model.add(Dense(10, activation='softmax'))
 
 model.summary()
